@@ -1,0 +1,72 @@
+<section class="container-fluid   bg-warning">
+<div class="row vh-100 d-flex align-items-center justify-content-center">
+  <div class="card shadow-sm py-5  p-4" style="max-width: 500px; width: 100%; border-radius: 25px;">
+    <h3 class="fw-bold mb-4 text-center">
+      <span class="border-start border-4 border-warning me-2"></span>
+      User Management System
+    </h3>
+    <h5 class="text-center fw-semibold">SIGN IN</h5>
+    <p class="text-muted text-center mb-4">
+      Enter your credentials to access your account
+    </p>
+<!--  -->
+    <!-- Form -->
+    <form [formGroup]="LoginForm" (ngSubmit)="loginSubmit(LoginForm)">
+
+      <div class="mb-3">
+        <label for="text" class="form-label fw-semibold">userName</label>
+        <input
+          type="text"
+          id="text"
+          class="form-control"
+          placeholder="Enter your userName"
+          formControlName="name"
+        />
+ <div *ngIf="LoginForm.get('username')?.errors && LoginForm.get('username')?.touched"
+  class="alert alert-danger w-100">
+        <p *ngIf="LoginForm.get('username')?.hasError('required')" class="m-0">username is required</p>
+        <p *ngIf="LoginForm.get('username')?.hasError('username')" class="m-0">Enter a valid username</p>
+      </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          placeholder="Enter your password"
+          formControlName="password"
+        />
+      <div *ngIf="LoginForm.get('password')?.invalid && LoginForm.get('password')?.touched" class="alert alert-danger w-100">
+        <p *ngIf="LoginForm.get('password')?.hasError('required')" class="m-0">Password is required</p>
+        <p *ngIf="LoginForm.get('password')?.hasError('pattern')" class="m-0">Password must be at least 8 characters, include upper and lower case letters, a number, and a special character</p>
+      </div>
+      </div>
+<button type="submit" class="btn btn-warning text-white fw-bold btn-main ms-auto d-block w-100">
+      <i class="fa fa-login" aria-hidden="true">
+sign in
+        <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+      </i>
+    </button>
+
+        <!-- Error Message -->
+    <p *ngIf="msgError" class="alert alert-danger w-50 m-0">{{ msgError }}</p>
+      <hr>
+  <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
+    </form>
+  </div>
+</div>
+</section>
+<!--
+<button [disabled]="LoginForm.invalid || isLoading" type="submit" class="btn btn-warning text-white fw-bold btn-main ms-auto d-block w-100">
+      <i class="fa fa-login" aria-hidden="true">
+sign in
+        <span *ngIf="isLoading"><i class="fas fa-spin fa-spinner"></i></span>
+      </i>
+    </button>
+
+ -->

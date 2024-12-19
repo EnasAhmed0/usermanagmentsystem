@@ -1,0 +1,16 @@
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card {
+  border-radius: 12px;
+}
+
+.form-control {
+  background-color: #f8f9fa;
+  border: none;
+  font-weight: bold;
+  color: #333;
+}
